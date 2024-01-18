@@ -28,3 +28,13 @@ While the fitting is expected to run remotely, the plotting etc can easily be ru
 ```
 ./plotPhi.sh Dec12_2017 34 2017
 ```
+
+
+# Andrzej Running
+
+```
+cd datacards/
+python3 make_cards.py --hist ~/work/tauana/drankin_Nov30_2017_UL/hists_sum_ --year 2017 --cat hadmu --cat hadel --cat hadhad --tag Nov13_2017_UL/1
+cd ..
+./runLimits.sh Nov13_2017_UL/1 full200 hadmu hadel hadhad
+```

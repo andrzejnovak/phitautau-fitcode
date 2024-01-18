@@ -634,8 +634,12 @@ class Cards:
                 )
 
             if sample.name == "data_obs":
-                ch.setObservation(template, read_sumw2=True)
+                print("XXXX")
+                print("Data", template)
+                ch.setObservation(template[:-1])
+                # ch.setObservation(template, read_sumw2=True)
             else:
+                print("MC", template)
                 sample_template = rl.TemplateSample(
                     f"{ch.name}_{sample.name}",
                     rl.Sample.SIGNAL
@@ -643,6 +647,7 @@ class Cards:
                     else rl.Sample.BACKGROUND,
                     template,
                 )
+                
                 # shape systematics
                 sample_template = self.systs_shape(
                     h, region, sample, sample_template, singlebin
@@ -673,6 +678,9 @@ class Cards:
                     self.mttone.name if singlebin else self.mtt.name,
                 )
             )
+            print("XXXX", np.zeros(len(self.mttone.binning) - 1) if singlebin else np.zeros(len(self.mtt.binning) - 1))
+            print(self.mttone.binning if singlebin else self.mtt.binning)
+            print(self.mttone.name if singlebin else self.mtt.name)
 
         # add channel
         self.model.addChannel(ch)

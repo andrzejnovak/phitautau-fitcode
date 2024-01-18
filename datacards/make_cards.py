@@ -171,7 +171,8 @@ def getQCDRatio(c, hists_qcd):
     return qcd_ratio
 
 
-def createCards(hist_dict, cat, year, odir, unblind=False, no_syst=False):
+# def createCards(hist_dict, cat, year, odir, unblind=False, no_syst=False):
+def createCards(hist_dict, cat, year, odir, unblind=False, no_syst=True):
     """
     Create cards.
 
@@ -184,7 +185,8 @@ def createCards(hist_dict, cat, year, odir, unblind=False, no_syst=False):
     """
 
     logger = logging.getLogger("create-cards")
-
+    no_syst = True
+    logger.info(f"Run with systematics: {not no_syst}")
     # create cards class (holds default settings)
     c = Cards(cat, year, no_syst)
 
@@ -349,12 +351,18 @@ def createCards(hist_dict, cat, year, odir, unblind=False, no_syst=False):
     # build regions
     for region in c.nnregions:
         # singlebin: integrate prediction over mass bins
+        # if c.islephad:
+        #     singlebinCR = True
+        #     singlebinFail = False
+        # else:
+        #     singlebinCR = False
+        #     singlebinFail = True
         if c.islephad:
-            singlebinCR = True
+            singlebinCR = False
             singlebinFail = False
         else:
             singlebinCR = False
-            singlebinFail = True
+            singlebinFail = False
         singlebin = singlebinFail and region == "fail"
         singlebinCR = singlebinCR or singlebin
 

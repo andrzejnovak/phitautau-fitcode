@@ -51,7 +51,8 @@ fi
 #python reloadFromPkl.py --indir /uscms_data/d3/drankin/HTauTau/boostedhiggs_v2/cards/ --outdir $1 --pkl ${modellist[@]} ${fullstr} #--addargs '" --freezeParameters wlnueffSF_hadhad,wlnueffSF_hadel,wlnueffSF_hadmu,topeffSF_hadhad,topeffSF_hadel,topeffSF_hadmu,wlnuLeffSF_hadhad,wlnuLeffSF_hadel,wlnuLeffSF_hadmu,topLeffSF_hadhad,topLeffSF_hadel,topLeffSF_hadmu"'
 #python reloadFromPkl.py --indir /uscms_data/d3/drankin/HTauTau/boostedhiggs_v2/cards/ --outdir $1 --pkl ${modellist[@]} ${fullstr} --expsig 0 --mode AsymptoticLimits --masses ${masslist[@]} --addargs '" --freezeParameters r_dy_hadmu,dy_eff_hadmu,r_dy_hadel,dy_eff_hadel,r_dy_hadhad,dy_eff_hadhad"' --nopass
 #python reloadFromPkl.py --indir /uscms_data/d3/drankin/HTauTau/boostedhiggs_v2/cards/ --outdir $1 --pkl ${modellist[@]} ${fullstr} --expsig 0 --mode AsymptoticLimits --masses ${masslist[@]} --addargs '"-t -1"'
-python reloadFromPkl.py --indir /uscms_data/d3/drankin/HTauTau/boostedhiggs_v2/cards/ --outdir $1 --pkl ${modellist[@]} ${fullstr} --expsig ${expsig} --mode ${mode} --masses ${masslist[@]} --addargs "${addargs}" ${nopass}
+echo "python reloadFromPkl.py --indir cards/ --outdir $1 --pkl ${modellist[@]} ${fullstr} --expsig ${expsig} --mode ${mode} --masses ${masslist[@]} --addargs "${addargs}" ${nopass}"
+python reloadFromPkl.py --indir cards/ --outdir $1 --pkl ${modellist[@]} ${fullstr} --expsig ${expsig} --mode ${mode} --masses ${masslist[@]} --addargs "${addargs}" ${nopass}
 
 OUTPUT=($1)
  
